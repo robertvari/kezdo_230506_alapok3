@@ -17,8 +17,18 @@ class Deck:
     def __init__(self):
         self.__cards = []
         self.create()
+    
+    @property
+    def card_count(self):
+        return len(self.__cards)
+    
+    @property
+    def cards(self):
+        return tuple(self.__cards)
 
     def create(self):
+        self.__cards.clear()
+
         # public instance attribut
         cards = [
             ["2", 2],
@@ -46,10 +56,15 @@ class Deck:
         random.shuffle(self.__cards)
 
     def draw(self):
-        print("Give a new card")
+        return self.__cards.pop(0)
 
 
 # only for testing
 # this condition True only when we runt THIS file
 if __name__ == "__main__":
     deck = Deck()
+    
+    my_card1 = deck.draw()
+    my_card2 = deck.draw()
+    my_hand = [my_card1, my_card2]
+    print(deck.cards)
