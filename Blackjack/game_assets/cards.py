@@ -1,3 +1,5 @@
+import random
+
 class Card:
     def __init__(self, name, value):
         self.__name = name
@@ -17,6 +19,7 @@ class Deck:
         self.create()
 
     def create(self):
+        # public instance attribut
         cards = [
             ["2", 2],
             ["3", 3],
@@ -35,6 +38,12 @@ class Deck:
 
         names = ["Heart", "Club", "Diamond", "Spade"]
 
+        for name in names:
+            for card_data in cards:
+                card = Card(f"{name} {card_data[0]}", card_data[1])
+                self.__cards.append(card)
+        
+        random.shuffle(self.__cards)
 
     def draw(self):
         print("Give a new card")
