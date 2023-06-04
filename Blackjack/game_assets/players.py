@@ -11,6 +11,10 @@ class Player_BASE:
     def draw_cards(self, deck):
         assert len(self.__hand) == 2, "Player hand must be inited!"
 
+        if not self.__playing:
+            print(f"{self._name} not playing this time.")
+            return
+        
         print(f"{self._name} starts his/her turn...")
         time.sleep(2)
         
@@ -44,6 +48,15 @@ class Player_BASE:
             new_card.value = 1
         
         self.__hand.append(new_card)
+
+    def give_bet(self, min_bet) -> int:
+        return_credits = min_bet
+        
+        if self.__credits < min_bet:
+            self.__playing = False
+            return 0
+
+        return return_credits
 
     @property
     def hand_value(self):
@@ -85,10 +98,7 @@ if __name__ == "__main__":
     ai_player2 = AI_Player()
 
     ai_player1.init_hand(deck)
-    ai_player1.draw_cards(deck)
-
-    ai_player2.init_hand(deck)
-    ai_player2.draw_cards(deck)
-
+    player_bet = ai_player1.give_bet(10)
+    
     ai_player1.info()
-    ai_player2.info()
+    print(player_bet)
