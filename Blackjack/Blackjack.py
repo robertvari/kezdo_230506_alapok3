@@ -1,10 +1,13 @@
 import os, platform, time
-from game_assets.cards import Card
+from game_assets.cards import Deck
+
 
 class Blackjack:
     def __init__(self) -> None:
         # self.clear_screen()
         self.intro()
+
+        self._deck = Deck()
     
     @staticmethod
     def clear_screen():
