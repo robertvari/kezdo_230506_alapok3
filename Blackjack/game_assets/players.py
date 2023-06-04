@@ -11,8 +11,26 @@ class Player_BASE:
     def draw_cards(self, deck):
         assert len(self.__hand) == 2, "Player hand must be inited!"
 
-        new_card = deck.draw()
-        self.__hand.append(new_card)
+        print(f"{self._name} starts his/her turn...")
+        time.sleep(2)
+        
+        while self.__playing:
+            # check hand value
+            hand_value = self.hand_value
+
+            if hand_value < random.randint(16, 19):
+                print(f"{self._name} draws a card")
+                time.sleep(2)
+
+                new_card = deck.draw()
+                if hand_value > 10 and new_card.value == 11:
+                    new_card.value = 1
+                
+                self.__hand.append(new_card)
+            else:
+                print(f"{self._name} finishes his/her turn.")
+                time.sleep(2)
+                self.__playing = False
 
     def init_hand(self, deck):
         self.__hand.clear()
@@ -64,7 +82,13 @@ if __name__ == "__main__":
     from cards import Deck
     deck = Deck()
     ai_player1 = AI_Player()
+    ai_player2 = AI_Player()
 
-    # ai_player1.init_hand(deck)
+    ai_player1.init_hand(deck)
     ai_player1.draw_cards(deck)
+
+    ai_player2.init_hand(deck)
+    ai_player2.draw_cards(deck)
+
     ai_player1.info()
+    ai_player2.info()
