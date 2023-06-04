@@ -70,6 +70,7 @@ class Player_BASE:
         if self.hand_value == 21:
             return_credits = self.__credits
 
+        print(f"{self._name} gives {return_credits} bet.")
         return return_credits
 
     @property
