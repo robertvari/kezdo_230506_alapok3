@@ -108,7 +108,7 @@ class HumanPlayer(Player_BASE):
             print(f"Your cards: {self.hand}")
             print(f"Hand value: {self.hand_value}")
             
-            if self.hand_value > 20:
+            if self.hand_value >= 20:
                 self.playing = False
                 print(f"You finished your turn. Your hand value: {self.hand_value}")
                 break
