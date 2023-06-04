@@ -17,6 +17,7 @@ class Blackjack:
         self.__game_loop()
     
     def __game_loop(self):
+        self.__clear_screen()
         self.__deck.create()
         self.__reward = 0
 
