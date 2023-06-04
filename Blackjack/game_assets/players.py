@@ -136,7 +136,6 @@ class HumanPlayer(Player_BASE):
 class AI_Player(Player_BASE):
     pass
 
-
 if __name__ == "__main__":
     from cards import Deck
     deck = Deck()
