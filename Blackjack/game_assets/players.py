@@ -118,6 +118,12 @@ class HumanPlayer(Player_BASE):
                 new_card = deck.draw()
                 print(f"Your card: {new_card}")
                 self._add_card(new_card)
+                time.sleep(3)
+            else:
+                if self.hand_value < 16:
+                    print("You have to draw a card. Your hand value less thand 16.")
+                else:
+                    self.playing = False
 
 class AI_Player(Player_BASE):
     pass
@@ -132,5 +138,5 @@ if __name__ == "__main__":
     player_bet = player.give_bet(10)
     player.draw_cards(deck)
 
-    # player.info()
-    # print(player_bet)
+    player.info()
+    print(player_bet)
