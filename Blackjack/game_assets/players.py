@@ -43,9 +43,8 @@ class Player_BASE:
             if hand_value < random.randint(16, 19):
                 print(f"{self._name} draws a card")
                 time.sleep(2)
-
-                new_card = deck.draw()                
-                self._add_card(new_card)
+             
+                self._add_card(deck.draw())
             else:
                 print(f"{self._name} finishes his/her turn.")
                 time.sleep(2)
@@ -56,9 +55,7 @@ class Player_BASE:
         self.__playing = True
 
         self._add_card(deck.draw())
-
-        new_card = deck.draw()       
-        self._add_card(new_card)
+        self._add_card(deck.draw())
 
     def give_bet(self, min_bet) -> int:
         return_credits = min_bet
