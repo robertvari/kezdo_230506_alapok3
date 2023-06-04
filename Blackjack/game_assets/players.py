@@ -9,6 +9,8 @@ class Player_BASE:
         self.__playing = True
 
     def draw_cards(self, deck):
+        assert len(self.__hand) == 2, "Player hand must be inited!"
+
         new_card = deck.draw()
         self.__hand.append(new_card)
 
@@ -63,6 +65,6 @@ if __name__ == "__main__":
     deck = Deck()
     ai_player1 = AI_Player()
 
-    # ai_player1.draw_cards(deck)
-    ai_player1.init_hand(deck)
+    # ai_player1.init_hand(deck)
+    ai_player1.draw_cards(deck)
     ai_player1.info()
