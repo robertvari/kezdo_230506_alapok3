@@ -100,31 +100,4 @@ class AI_Player(Player_BASE):
 if __name__ == "__main__":
     from cards import Deck
     deck = Deck()
-    ai_player1 = AI_Player()
-    ai_player2 = AI_Player()
-    ai_player3 = AI_Player()
-    ai_player4 = AI_Player()
-
-    ai_player1.init_hand(deck)
-    ai_player1_bet = ai_player1.give_bet(10)
     
-    ai_player1.info()
-    print(ai_player1_bet)
-
-    ai_player2.init_hand(deck)
-    ai_player2_bet = ai_player2.give_bet(10)
-    
-    ai_player2.info()
-    print(ai_player2_bet)
-
-    ai_player3.init_hand(deck)
-    ai_player3_bet = ai_player3.give_bet(10)
-    
-    ai_player3.info()
-    print(ai_player3_bet)
-
-    ai_player4.init_hand(deck)
-    ai_player4_bet = ai_player4.give_bet(10)
-    
-    ai_player3.info()
-    print(ai_player4_bet)
