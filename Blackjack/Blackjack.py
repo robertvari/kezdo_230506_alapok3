@@ -28,12 +28,34 @@ class Blackjack:
 
         # start rounds
         for player in self.__player_list:
+            print("-"*50)
             player.draw_cards(self.__deck)
+
+        self.__get_winner()
         
     def __get_winner(self):
         self.__clear_screen()
-        for player in self.__player_list:
-            player.info()
+        winner_list = [player for player in self.__player_list if player.hand_value <= 21]
+
+        if not winner_list:
+            print("House wins")
+        else:
+            sorted_winner_list = sorted(winner_list, key=lambda player: player.hand_value)
+            winner = sorted_winner_list[-1]
+            
+            print(f"The winner is {winner}. Reward: {self.__reward} credits.")
+            winner.give_reward(winner)
+
+            if winner == self.__player:
+                print(f"Your credits: {winner.credits}")
+        
+        player_response = input("Do you want to play again? (y/n)")
+        if player_response.lower() == "y":
+            # play new game
+            self.__game_loop()
+        
+        # exit game
+        exit()
 
     def __create_player_list(self):
         self.__player = HumanPlayer()

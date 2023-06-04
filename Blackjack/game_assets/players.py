@@ -13,6 +13,10 @@ class Player_BASE:
         return tuple(self.__hand)
     
     @property
+    def credits(self):
+        return self.__credits
+
+    @property
     def playing(self):
         return self.__playing
     
@@ -56,6 +60,9 @@ class Player_BASE:
 
         self._add_card(deck.draw())
         self._add_card(deck.draw())
+
+    def give_reward(self, reward):
+        self.__credits += reward
 
     def give_bet(self, min_bet) -> int:
         return_credits = min_bet
