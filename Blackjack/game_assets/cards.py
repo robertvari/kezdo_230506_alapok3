@@ -5,6 +5,15 @@ class Card:
         self.__name = name
         self.__value = value
 
+    @property
+    def value(self):
+        return self.__value
+    
+    @value.setter
+    def value(self, new_value):
+        assert self.__value == 11 and new_value == 1, "Invalid card or value"
+        self.__value = new_value
+
     def __str__(self) -> str:
         return f"Name: {self.__name} Value: {self.__value}"
     

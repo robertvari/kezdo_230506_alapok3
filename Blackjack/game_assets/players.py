@@ -1,4 +1,5 @@
-import random
+import random, time
+
 
 class Player_BASE:
     def __init__(self) -> None:
@@ -6,6 +7,27 @@ class Player_BASE:
         self.__credits = random.randint(50, 200)
         self.__hand = []
         self.__playing = True
+
+    def draw_cards(self, deck):
+        new_card = deck.draw()
+        self.__hand.append(new_card)
+
+    def init_hand(self, deck):
+        self.__hand.clear()
+        self.__playing = True
+
+        self.__hand.append(deck.draw())
+
+        # check new card and hand value before append
+        new_card = deck.draw()
+        if self.hand_value > 10 and new_card.value == 11:
+            new_card.value = 1
+        
+        self.__hand.append(new_card)
+
+    @property
+    def hand_value(self):
+        return sum([card.value for card in self.__hand])
 
     @staticmethod
     def get_random_name():
@@ -19,6 +41,7 @@ class Player_BASE:
         print(f"Name: {self._name}")
         print(f"Credits: {self.__credits}")
         print(f"Hand: {self.__hand}")
+        print(f"Hand value: {self.hand_value}")
         print("-"*50)
 
     def __repr__(self) -> str:
@@ -36,12 +59,10 @@ class AI_Player(Player_BASE):
 
 
 if __name__ == "__main__":
-    human_player = HumanPlayer()
+    from cards import Deck
+    deck = Deck()
     ai_player1 = AI_Player()
-    ai_player2 = AI_Player()
-    ai_player3 = AI_Player()
 
-    human_player.info()
+    # ai_player1.draw_cards(deck)
+    ai_player1.init_hand(deck)
     ai_player1.info()
-    ai_player2.info()
-    ai_player3.info()
