@@ -7,6 +7,10 @@ class Player_BASE:
         self.__hand = []
         self.__playing = True
 
+    @staticmethod
+    def get_random_name():
+        first_names = ["Marnie", "Johnathan", "Mahnoor", "Hassan", "Alissa", "Millie", "Qasim", "Damon", "Shreya", "Carly"]
+        last_names =  ["Roy", "Aguirre", "Sandoval", "Rogers", "Cole", "Matthams", "Allen", "Stokes", "Deleon", "Hampton"]
 
 class HumanPlayer(Player_BASE):
     pass
