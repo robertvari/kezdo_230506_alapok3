@@ -14,13 +14,22 @@ class Player_BASE:
 
         return f"{random.choice(first_names)} {random.choice(last_names)}"
 
+    def info(self):
+        print("-"*50)
+        print(f"Name: {self._name}")
+        print(f"Credits: {self.__credits}")
+        print(f"Hand: {self.__hand}")
+        print("-"*50)
+
     def __repr__(self) -> str:
         return self._name
 
 class HumanPlayer(Player_BASE):
     def __init__(self) -> None:
         super().__init__()
-        self._name = input("What is your name?")
+        # self._name = input("What is your name?")
+        # TODO Remove this!!
+        self._name = "Robert Vari"
 
 class AI_Player(Player_BASE):
     pass
@@ -32,5 +41,7 @@ if __name__ == "__main__":
     ai_player2 = AI_Player()
     ai_player3 = AI_Player()
 
-    print(human_player)
-    print(ai_player1, ai_player2, ai_player3)
+    human_player.info()
+    ai_player1.info()
+    ai_player2.info()
+    ai_player3.info()
