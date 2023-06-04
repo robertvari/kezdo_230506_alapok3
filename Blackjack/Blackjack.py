@@ -44,7 +44,7 @@ class Blackjack:
             winner = sorted_winner_list[-1]
             
             print(f"The winner is {winner}. Reward: {self.__reward} credits.")
-            winner.give_reward(winner)
+            winner.give_reward(self.__reward)
 
             if winner == self.__player:
                 print(f"Your credits: {winner.credits}")
