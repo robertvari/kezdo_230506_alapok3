@@ -56,6 +56,12 @@ class Player_BASE:
             self.__playing = False
             return 0
 
+        if self.hand_value >= 18 and self.hand_value < 21:
+            return_credits = (self.__credits - min_bet) // 2
+
+        if self.hand_value == 21:
+            return_credits = self.__credits
+
         return return_credits
 
     @property
@@ -96,9 +102,29 @@ if __name__ == "__main__":
     deck = Deck()
     ai_player1 = AI_Player()
     ai_player2 = AI_Player()
+    ai_player3 = AI_Player()
+    ai_player4 = AI_Player()
 
     ai_player1.init_hand(deck)
-    player_bet = ai_player1.give_bet(10)
+    ai_player1_bet = ai_player1.give_bet(10)
     
     ai_player1.info()
-    print(player_bet)
+    print(ai_player1_bet)
+
+    ai_player2.init_hand(deck)
+    ai_player2_bet = ai_player2.give_bet(10)
+    
+    ai_player2.info()
+    print(ai_player2_bet)
+
+    ai_player3.init_hand(deck)
+    ai_player3_bet = ai_player3.give_bet(10)
+    
+    ai_player3.info()
+    print(ai_player3_bet)
+
+    ai_player4.init_hand(deck)
+    ai_player4_bet = ai_player4.give_bet(10)
+    
+    ai_player3.info()
+    print(ai_player4_bet)
