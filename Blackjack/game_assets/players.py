@@ -57,7 +57,7 @@ class Player_BASE:
             return 0
 
         if self.hand_value >= 18 and self.hand_value < 21:
-            return_credits = (self.__credits - min_bet) // 2
+            return_credits += (self.__credits - min_bet) // 2
 
         if self.hand_value == 21:
             return_credits = self.__credits
